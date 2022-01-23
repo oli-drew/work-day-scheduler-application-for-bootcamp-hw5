@@ -22,10 +22,11 @@ const rowColour = (inputHour) => {
 
 // Save task
 const saveTask = (e) => {
-  const inputID = e.target.getAttribute("data-hour");
-  console.log(inputID);
-  const inputValue = document.querySelector(`#input-${inputID}`).value;
-  console.log(inputValue);
+  const hour = e.target.getAttribute("data-hour");
+  console.log(hour);
+  const task = document.querySelector(`#input-${hour}`).value;
+  console.log(task);
+  addTask(hour, task);
 };
 
 // Timeblocks table
@@ -79,54 +80,37 @@ const createTimeblocks = () => {
 
 createTimeblocks();
 
-// const buttons = document.getElementsByClassName("saveBtn");
-// buttons.forEach((btn) => {
-//   btn.addEventListener("click", console.log("hi"));
-// });
-
-// // Capture user input
-// const testSubmit = (e) => {
-//   // // Prevent form submit default action
-//   // e.preventDefault();
-//   const testInput = document.querySelector("#test");
-//   // Initials value
-//   console.log(testInput.value);
-// };
-
-// // Test submit button
-// const testBtn = document.querySelector("#testBtn");
-// testBtn.addEventListener("click", testSubmit);
-
 // // Array to store tasks
-// const dailyTasks = [];
+const dailyTasks = [];
 
 // // Function to get previous tasks
-// const getTasks = () => {
-//   const tasks = localStorage.getItem("tasks");
-//   // If not null
-//   if (tasks) {
-//     // Return the tasks as an object
-//     return JSON.parse(tasks);
-//   } else {
-//     // Return empty object
-//     return {};
-//   }
-// };
+const getTasks = () => {
+  const tasks = localStorage.getItem("tasks");
+  // If not null
+  if (tasks) {
+    // Return the tasks as an object
+    return JSON.parse(tasks);
+  } else {
+    // Return empty object
+    return {};
+  }
+};
 
-// // Save to local storage
-// // Function to add task
-// const addTask = (hour, task) => {
-//   // Create new task
-//   const newTask = { [hour]: task };
-//   // Get the previous tasks
-//   const prevTasks = getTasks();
-//   // Assign new tasks to old tasks object
-//   const updateTasks = Object.assign(newTask, prevTasks);
-//   // Save the tasks to local storage
-//   localStorage.setItem("tasks", JSON.stringify(updateTasks));
-//   // Open high scores table
-//   displayTasks();
-// };
+// Save to local storage
+// Function to add task
+const addTask = (hour, task) => {
+  // Create new task
+  const newTask = { [hour]: task };
+  // Get the previous tasks
+  const prevTasks = getTasks();
+  // Assign new tasks to old tasks object
+  const updateTasks = Object.assign(newTask, prevTasks);
+  console.log(updateTasks);
+  // Save the tasks to local storage
+  localStorage.setItem("tasks", JSON.stringify(updateTasks));
+  // Display tasks
+  // displayTasks();
+};
 
 // // Display tasks
 // const displayTasks = () => {
