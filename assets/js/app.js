@@ -45,18 +45,37 @@ const pastPresentFuture = (inputHour) => {
 //   <td class="col-1 text-center"><button class="btn btn-outline-success">Save</button></td>
 // </tr> */}
 
+// Set colour based on time
+const rowColour = (inputHour) => {
+  const currentHour = moment().hour();
+  console.log(`hour: ${currentHour}`);
+  if (inputHour < currentHour) {
+    console.log("Past");
+    return "table-secondary";
+  } else if (inputHour > currentHour) {
+    console.log("Future");
+    return "table-primary";
+  } else {
+    console.log("Present");
+    return "table-success";
+  }
+};
+
 // Timeblocks table
 const timeblocks = document.querySelector("#timeblocks");
 
 // Create timeblocks dynamically
 const createTimeblocks = () => {
-  let startHour = 9;
+  let startHour = 0;
   for (let i = 0; i <= 8; i++) {
     // Convert start hour to time
     const hour = moment().hour(startHour).format("hh a");
     // Create a new table row
     const row = document.createElement("tr");
-    row.classList.add("table-secondary");
+    row.setAttribute("id", `row-${startHour}`);
+    // Dynamically color rows
+    const rowClass = rowColour(startHour);
+    row.classList.add(rowClass);
     timeblocks.append(row);
     // Time column
     const timeCol = document.createElement("th");
@@ -78,7 +97,7 @@ const createTimeblocks = () => {
     row.append(saveCol);
     // Save button
     const saveBtn = document.createElement("button");
-    saveBtn.classList.add("btn", "btn-outline-success");
+    saveBtn.classList.add("btn", "btn-outline-secondary");
     saveBtn.textContent = "Save";
     saveCol.append(saveBtn);
     // Increment start hour
