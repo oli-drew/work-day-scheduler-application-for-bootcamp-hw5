@@ -12,6 +12,7 @@ The application uses JavaScript and the JQuery library to dynamically update the
 - HTML, CSS, and JavaScript
 - JQuery
 - Bootstrap 5
+- MomentJS
 - Fontawesome Icons
 - Deployed to GitHub Pages
 
