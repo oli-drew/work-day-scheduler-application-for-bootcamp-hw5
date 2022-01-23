@@ -79,18 +79,6 @@ const clearTasks = () => {
 // CLear tasks button
 const clearBtn = $("#clearTasks").click(clearTasks);
 
-// Settings
-let startHour;
-let dayLength;
-// Settings function with default of 9 to 5
-const settings = (dayStart = 9, dayEnd = 17) => {
-  startHour = dayStart;
-  dayLength = dayEnd - dayStart;
-};
-
-// 8am to 6pm working day
-settings(8, 18);
-
 // Create timeblocks dynamically
 const createTimeblocks = () => {
   // Timeblocks table
@@ -133,5 +121,18 @@ const createTimeblocks = () => {
   }
 };
 
-createTimeblocks();
-displayTasks();
+// Settings
+let startHour;
+let dayLength;
+// Settings function with default of 9 to 5
+const settings = (dayStart = 9, dayEnd = 17) => {
+  startHour = dayStart;
+  dayLength = dayEnd - dayStart;
+  createTimeblocks();
+  displayTasks();
+};
+
+// 8am to 6pm working day
+settings(8, 18);
+
+// Future development will allow users to set working hours in settings modal
