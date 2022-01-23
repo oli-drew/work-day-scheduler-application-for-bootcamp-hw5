@@ -63,6 +63,22 @@ const displayTasks = () => {
   });
 };
 
+// Reset Inputs
+const resetInputs = () => {
+  $("td").each(function () {
+    $(this).find(":input").val("");
+  });
+};
+
+// Clear tasks in localstorage
+const clearTasks = () => {
+  localStorage.removeItem("tasks");
+  resetInputs();
+};
+
+// CLear tasks button
+const clearBtn = $("#clearTasks").click(clearTasks);
+
 // Settings
 let startHour;
 let dayLength;
