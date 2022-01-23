@@ -102,25 +102,27 @@ const createTimeblocks = () => {
     inputCol.classList.add("col-10");
     row.append(inputCol);
     // User task Input
-    const taskInput = document.createElement("input");
+    const taskInput = document.createElement("textarea");
     taskInput.setAttribute("type", "text");
     taskInput.setAttribute("id", `input-${startHour}`);
     taskInput.classList.add("form-control");
     // Set value
-    // taskInput.value = displayTasks();
     inputCol.append(taskInput);
     // Save column
     const saveCol = document.createElement("td");
-    saveCol.classList.add("col-1", "text-center");
+    saveCol.classList.add("col-1", "text-center", "align-middle");
     row.append(saveCol);
     // Save button
     const saveBtn = document.createElement("button");
     saveBtn.addEventListener("click", saveTask);
     saveBtn.setAttribute("data-hour", `${startHour}`);
-    saveBtn.classList.add("btn", "btn-outline-secondary");
-    // saveBtn.innerHTML = '<i class="fas fa-save"></i>';
-    saveBtn.innerHTML = "Save";
+    saveBtn.classList.add("btn", "btn-outline-secondary", "btn-lg");
     saveCol.append(saveBtn);
+    // Save icon inside button
+    const saveIcon = document.createElement("i");
+    saveIcon.setAttribute("data-hour", `${startHour}`);
+    saveIcon.classList.add("fas", "fa-save");
+    saveBtn.append(saveIcon);
     // Increment start hour
     startHour++;
   }
