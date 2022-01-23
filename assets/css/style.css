@@ -5,6 +5,10 @@ body {
   line-height: 1;
 }
 
+h1 {
+  color: #0a58ca;
+}
+
 /* Textarea cannot be expanded */
 textarea {
   resize: none;
