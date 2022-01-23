@@ -1,9 +1,8 @@
 "use strict";
 // Current day element
 const currentDay = $("#currentDay");
-// Get current day using Moment.js library
+// Get current day and date using Moment.js library
 const nowDay = moment().format("dddd");
-// Get current day using Moment.js library
 const nowDate = moment().format("MMMM Do");
 // Add current day and date to currentDay element
 currentDay.text(`${nowDay}, ${nowDate}`);
@@ -22,17 +21,10 @@ const rowColour = (inputHour) => {
 
 // Save task
 const saveTask = (e) => {
-  const hour = e.target.getAttribute("data-hour");
-  console.log(hour);
-  const task = document.querySelector(`#input-${hour}`).value;
-  console.log(task);
+  const hour = $(e.target).attr("data-hour");
+  const task = $(`#input-${hour}`).val();
   addTask(hour, task);
 };
-
-// Disable Save and Input for that hour
-
-// // Array to store tasks
-const dailyTasks = [];
 
 // // Function to get previous tasks
 const getTasks = () => {
