@@ -64,7 +64,8 @@ const displayTasks = () => {
 };
 
 // Timeblocks table
-const timeblocks = document.querySelector("#timeblocks");
+// const timeblocks = document.querySelector("#timeblocks");
+const timeblocks = $("#timeblocks");
 
 // Create timeblocks dynamically
 const createTimeblocks = () => {
@@ -73,43 +74,35 @@ const createTimeblocks = () => {
   for (let i = 0; i <= dayLength; i++) {
     // Convert start hour to time
     const hour = moment().hour(startHour).format("hh a");
-    // Create a new table row
-    const row = document.createElement("tr");
-    row.setAttribute("id", `row-${startHour}`);
     // Dynamically color rows
     const rowClass = rowColour(startHour);
-    row.classList.add(rowClass);
+    // Create a new table row
+    const row = $(`<tr id="row-${startHour}" class="${rowClass}"></tr>`);
     timeblocks.append(row);
     // Time column
-    const timeCol = document.createElement("th");
-    timeCol.classList.add("col-1", "text-center", "align-middle");
-    timeCol.textContent = hour;
+    const timeCol = $(
+      `<th class="col-1 text-center align-middle">${hour}</th>`
+    );
     row.append(timeCol);
     // Input column
-    const inputCol = document.createElement("td");
-    inputCol.classList.add("col-10");
+    const inputCol = $(`<td class="col-10"></td>`);
     row.append(inputCol);
     // User task Input
-    const taskInput = document.createElement("textarea");
-    taskInput.setAttribute("type", "text");
-    taskInput.setAttribute("id", `input-${startHour}`);
-    taskInput.classList.add("form-control");
-    // Set value
+    const taskInput = $(
+      `<textarea id="input-${startHour}" type="text" class="form-control"></textarea>`
+    );
     inputCol.append(taskInput);
     // Save column
-    const saveCol = document.createElement("td");
-    saveCol.classList.add("col-1", "text-center", "align-middle");
+    const saveCol = $(`<td class="col-1 text-center align-middle"></td>`);
     row.append(saveCol);
     // Save button
-    const saveBtn = document.createElement("button");
-    saveBtn.addEventListener("click", saveTask);
-    saveBtn.setAttribute("data-hour", `${startHour}`);
-    saveBtn.classList.add("btn", "btn-outline-secondary", "btn-lg");
+    const saveBtn = $(
+      `<button data-hour="${startHour}" class="btn btn-outline-secondary btn-lg"></button>`
+    );
+    saveBtn.click(saveTask);
     saveCol.append(saveBtn);
     // Save icon inside button
-    const saveIcon = document.createElement("i");
-    saveIcon.setAttribute("data-hour", `${startHour}`);
-    saveIcon.classList.add("fas", "fa-save");
+    const saveIcon = $(`<i data-hour="${startHour}" class="fas fa-save"></i>`);
     saveBtn.append(saveIcon);
     // Increment start hour
     startHour++;
@@ -117,5 +110,4 @@ const createTimeblocks = () => {
 };
 
 createTimeblocks();
-
 displayTasks();
