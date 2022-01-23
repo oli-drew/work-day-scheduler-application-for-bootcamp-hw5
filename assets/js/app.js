@@ -26,7 +26,7 @@ const saveTask = (e) => {
   addTask(hour, task);
 };
 
-// // Function to get previous tasks
+// Function to get previous tasks
 const getTasks = () => {
   const tasks = localStorage.getItem("tasks");
   // If not null
@@ -44,10 +44,8 @@ const addTask = (hour, task) => {
   if (task) {
     // Create new task
     const newTask = { [hour]: task };
-    console.log(`new task: ${newTask}`);
     // Get the previous tasks
     const prevTasks = getTasks();
-    console.log(`prev task: ${prevTasks}`);
     // Assign new tasks to old tasks object
     const updateTasks = Object.assign(prevTasks, newTask);
     // Save the tasks to local storage
@@ -55,15 +53,13 @@ const addTask = (hour, task) => {
   }
 };
 
-// Display tasks
+// Display tasks function
 const displayTasks = () => {
-  const tasks = getTasks();
   // Convert to array
-  const tasksArr = Object.entries(tasks);
+  const tasksArr = Object.entries(getTasks());
   // Loop over tasks array
   tasksArr.forEach(([key, value]) => {
-    const input = document.querySelector(`#input-${key}`);
-    input.value = value;
+    $(`#input-${key}`).val(value);
   });
 };
 
