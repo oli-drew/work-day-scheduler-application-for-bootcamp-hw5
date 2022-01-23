@@ -52,11 +52,12 @@ const addTask = (hour, task) => {
   if (task) {
     // Create new task
     const newTask = { [hour]: task };
+    console.log(`new task: ${newTask}`);
     // Get the previous tasks
     const prevTasks = getTasks();
+    console.log(`prev task: ${prevTasks}`);
     // Assign new tasks to old tasks object
-    const updateTasks = Object.assign(newTask, prevTasks);
-    console.log(updateTasks);
+    const updateTasks = Object.assign(prevTasks, newTask);
     // Save the tasks to local storage
     localStorage.setItem("tasks", JSON.stringify(updateTasks));
   }
