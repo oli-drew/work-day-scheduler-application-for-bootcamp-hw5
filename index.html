@@ -46,24 +46,25 @@
     <!-- Footer -->
     <footer class="bg-light pt-3 mt-3 text-center">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item">
-          <span class="px-2 fw-bold text-muted">Work Day Scheduler</span>
-        </li>
-        <li class="nav-item text-muted">
-          <i
-            id="settingsIcon"
-            data-bs-toggle="modal"
-            data-bs-target="#settingsModal"
-            class="fas fa-cog"
-          ></i>
-        </li>
+        <button
+          id="settingsIcon"
+          data-bs-toggle="modal"
+          data-bs-target="#settingsModal"
+          type="button"
+          class="btn btn-outline-primary"
+        >
+          Settings <i class="fas fa-cog"></i>
+        </button>
       </ul>
       <p class="text-muted mb-0 pb-3">
-        © 2022, <a href="https://github.com/oli-drew">Oliver Drew</a>
+        © 2022, Created by
+        <a class="link-secondary" href="https://github.com/oli-drew"
+          >Oliver Drew</a
+        >
       </p>
     </footer>
 
-    <!-- Modal -->
+    <!-- Modal for settings -->
     <div
       class="modal fade"
       id="settingsModal"

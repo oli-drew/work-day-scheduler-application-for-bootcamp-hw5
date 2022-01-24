@@ -13,9 +13,3 @@ h1 {
 textarea {
   resize: none;
 }
-
-/* Settings Icon */
-.fa-cog:hover {
-  color: darkgrey;
-  cursor: pointer;
-}
