@@ -23,3 +23,7 @@ The application uses JavaScript and the JQuery library to dynamically update the
 ## Deployment link
 
 https://oli-drew.github.io/work-day-scheduler-application-for-bootcamp-hw5/
+
+## License
+
+[MIT License](LICENSE)
