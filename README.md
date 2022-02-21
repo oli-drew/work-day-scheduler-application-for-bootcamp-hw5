@@ -27,3 +27,7 @@ https://oli-drew.github.io/work-day-scheduler-application-for-bootcamp-hw5/
 ## License
 
 [MIT License](LICENSE)
+
+## Contact Information
+
+[Email: oli_webdev@protonmail.com](mailto:oli_webdev@protonmail.com)
